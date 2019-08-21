@@ -35,7 +35,7 @@
 				"attributes": {
 					"required": [
 						"name",
-						"type"
+						"managedAttributeType"
 					],
 					"properties": {
 						"name": {
@@ -48,7 +48,7 @@
 								"type_status"
 							]
 						},
-						"type": {
+						"managedAttributeType": {
 							"type": ["integer","string"],
 							"description": "ref to the type of the managed attribute"
 						},						
