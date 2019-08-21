@@ -16,6 +16,7 @@
 				"type",
 				"attributes"
 			],
+			"additionalProperties": false,
 			"properties": {
 				"id": {
 					"type": "string",
@@ -33,12 +34,13 @@
 				},
 				"attributes": {
 					"required": [
-						"name"
+						"name",
+						"type"
 					],
 					"properties": {
 						"name": {
 							"type": "string",
-							"description": "ref to the name of the attribute",
+							"description": "ref to the name of the managed attribute",
 							"examples": [
 								"specimen_view",
 								"identifier",
@@ -46,7 +48,11 @@
 								"type_status"
 							]
 						},
-						"accepted values": {
+						"type": {
+							"type": ["integer","string"],
+							"description": "ref to the type of the managed attribute"
+						},						
+						"acceptedValues": {
 							"type": "array",
 							"items": [
 								{
@@ -54,7 +60,7 @@
 									"description": "accepted value of the given managed attribute"
 								}
 							],
-							"description": "ref to the accepted values of the named attribute",
+							"description": "ref to the accepted values of the named attribute if any",
 							"examples": [
 								"dosal for specimen_view",
 								"CataloguedObject for identifier_scope"
