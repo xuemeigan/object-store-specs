@@ -1,66 +1,102 @@
 {
-    "$id": "http://localhost:8080/json-schema/getOneMetaDataJSONSchema.json",
-    "base": "http://localhost:8080/api",    
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "getOneMetaDataJSONSchema",
-    "description": "Metadata schema for all types of objects",
-    "type": "object",
-    "required": [
-        "dateCreated",
-        "mediaType",
-        "hash",
-        "createdBy",
-        "uploadedBy",
-        "copyrightOwner",
-        "license",
-        "objectType"
-    ],
-    "additionalProperties": true,
-    "properties": {
-        "dateCreated" : {
-          "type" : "string",
-            "description": "ref to the date created."
-        },
-        "mediaType": {
-            "type": "string",
-            "description": "ref to the IANA media type."
-        },
-        "hash": {
-            "type": "string",
-            "description": "ref to the hash value for dedup etc."
-        },
-        "createdBy": {
-            "type": "string",
-            "description": "ref to the media creator."
-        },
-        "uploadedBy": {
-            "type": "string",
-            "description": "ref to the person who has uploaded the media."
-        },
-        "copyrightOwner": {
-            "type": "string",
-            "description": "ref to the copyright owner of the media."
-        },
-        "objectType": {
-            "enum": [
-                "Image",
-                "Audio",
-                "Video",
-                "Document"
-            ],
-            "description": "ref to the related object type for this meta data."
-        },
-        "managedAttributes": {
-            "type": "array",
-            "items": [
-                {
-                    "type": ["string","array","object"],
-                    "description": "description of the managed attribute."
-                }
-             ]
-        },
-        "unmanagedAttributes":  {
-            "type":"object"
-        }
-    }
+	"$id": "http://localhost:8080/json-schema/getOneMetaDataJSONSchema.json",
+	"base": "http://localhost:8080/api",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "getOneMetaDataJSONSchema",
+	"description": "Metadata schema for all types of objects",
+	"type": "object",	
+	"required": [
+		"data"
+	],
+	"properties": {
+		"additionalProperties": false,
+		"data": {
+			"type": "object",
+			"required": [
+				"id",
+				"type",
+				"attributes"
+			],			
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"type": {
+					"const": "metaData",
+					"description": "The type of the object of the data being returned."
+				},
+				"attributes": {
+					"type": "object",
+					"required": [
+						"dateCreated",
+						"mediaType",
+						"hash",
+						"createdBy",
+						"uploadedBy",
+						"copyrightOwner",
+						"license",
+						"objectType"
+					],
+					"properties": {
+						"dateCreated": {
+							"type": "string",
+							"description": "ref to the date created."
+						},
+						"mediaType": {
+							"type": "string",
+							"description": "ref to the IANA media type."
+						},
+						"hash": {
+							"type": "string",
+							"description": "ref to the hash value for dedup etc."
+						},
+						"createdBy": {
+							"type": "string",
+							"description": "ref to the media creator."
+						},
+						"uploadedBy": {
+							"type": "string",
+							"description": "ref to the person who has uploaded the media."
+						},
+						"copyrightOwner": {
+							"type": "string",
+							"description": "ref to the copyright owner of the media."
+						},
+						"objectType": {
+							"enum": [
+								"Image",
+								"Audio",
+								"Video",
+								"Document"
+							],
+							"description": "ref to the related object type for this meta data."
+						},
+						"unmanagedAttributes": {
+							"type": "array",
+							"items": {
+								"type": "string",
+								"description": "unmanaged attribute name and value pairs with seperation such as colon, e.g, myKey:myValue"
+							}
+						},
+						"derivedFrom": {
+							"type": "string",
+							"description": "A URL that points to a meta data object that this meta derived from,such as in a thumbnail case",
+							"pattern": "^(http:\/\/|https:\/\/)+"
+						}
+					}
+				},
+				"relationships": {
+					"properties": {
+						"managedAttributes": {
+							"allOf": [
+								{
+									"$ref": "common/relationship.json"
+								}
+							]
+						}
+					}
+				}
+			}
+		}
+	}
 }
