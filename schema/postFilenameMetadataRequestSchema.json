@@ -1,26 +1,31 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://localhost:8080/json-schema/postFilenameMetadataRequestSchema.json",
-  "$base": "https://localhost:8080/api/",
-  "title": "The filename parse request schema.",
-  "type": "object",
-  "required": ["data"],
-  "properties": {
-    "data": {
-      "required": ["fileName","strategyName"],
-      "type" : "object",
-      "properties": {
-        "attributes" : {
-          "fileName": {
-            "type": "string",
-            "description": "The file name to be parsed."
-          },
-          "strategyName": {
-            "type": "string",
-            "description": "Name of the strategy being used."
-          }
-        }
-      }
-    }
-  }
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://localhost:8080/json-schema/postFilenameMetadataRequestSchema.json",
+	"$base": "https://localhost:8080/api/",
+	"title": "The filename parse request schema.",
+	"type": "object",
+	"required": [
+		"data"
+	],
+	"properties": {
+		"data": {
+			"required": [
+				"fileName",
+				"strategyName"
+			],
+			"type": "object",
+			"properties": {
+				"attributes": {
+					"fileName": {
+						"type": "string",
+						"description": "The file name to be parsed."
+					},
+					"strategyName": {
+						"type": "string",
+						"description": "Name of the strategy being used."
+					}
+				}
+			}
+		}
+	}
 }

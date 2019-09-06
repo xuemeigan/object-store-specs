@@ -1,66 +1,78 @@
 {
-    "$id": "http://localhost:8080/json-schema/getOneMetaDataJSONSchema.json",
-    "base": "http://localhost:8080/api",    
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "getOneMetaDataJSONSchema",
-    "description": "Metadata schema for all types of objects",
-    "type": "object",
-    "required": [
-        "dateCreated",
-        "mediaType",
-        "hash",
-        "createdBy",
-        "uploadedBy",
-        "copyrightOwner",
-        "license",
-        "objectType"
-    ],
-    "additionalProperties": true,
-    "properties": {
-        "dateCreated" : {
-          "type" : "string",
-            "description": "ref to the date created."
-        },
-        "mediaType": {
-            "type": "string",
-            "description": "ref to the IANA media type."
-        },
-        "hash": {
-            "type": "string",
-            "description": "ref to the hash value for dedup etc."
-        },
-        "createdBy": {
-            "type": "string",
-            "description": "ref to the media creator."
-        },
-        "uploadedBy": {
-            "type": "string",
-            "description": "ref to the person who has uploaded the media."
-        },
-        "copyrightOwner": {
-            "type": "string",
-            "description": "ref to the copyright owner of the media."
-        },
-        "objectType": {
-            "enum": [
-                "Image",
-                "Audio",
-                "Video",
-                "Document"
-            ],
-            "description": "ref to the related object type for this meta data."
-        },
-        "managedAttributes": {
-            "type": "array",
-            "items": [
-                {
-                    "type": ["string","array","object"],
-                    "description": "description of the managed attribute."
-                }
-             ]
-        },
-        "unmanagedAttributes":  {
-            "type":"object"
-        }
-    }
+	"$id": "http://localhost:8080/json-schema/getOneMetaDataJSONSchema.json",
+	"base": "http://localhost:8080/api",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "getOneMetaDataJSONSchema",
+	"description": "Schema representing the metadata associated with objects",
+	"type": "object",
+	"required": [
+		"dateCreated",
+		"mediaType",
+		"createdBy",
+		"copyrightOwner",
+		"license",
+		"objectType"
+	],
+	"additionalProperties": true,
+	"properties": {
+		"mediaType": {
+			"type": "string",
+			"description": "IANA media type."
+		},
+		"objectType": {
+			"enum": [
+				"Image",
+				"Audio",
+				"Video",
+				"Document"
+			],
+			"description": "Type of object stored. Higher level than mediaType."
+		},
+		"dateCreated": {
+			"type": "string",
+			"description": "Date representing when object has been initialy created."
+		},
+		"dateUploaded": {
+			"type": "string",
+			"description": "Date representing when the associated object got successfully uploaded. Automaticaly set."
+		},
+		"createdBy": {
+			"type": "string",
+			"description": "Reference to the person who created the object."
+		},
+		"uploadedBy": {
+			"type": "string",
+			"description": "Reference to the person who uploaded the object."
+		},
+		"hash": {
+			"type": "string",
+			"description": "Hash of the uploaded object. Automaticaly generated on successful file upload."
+		},
+		"copyrightOwner": {
+			"type": "string",
+			"description": "Copyright owner of the object."
+		},
+		"managedAttributes": {
+			"type": "array",
+			"items": [
+				{
+					"type": [
+						"object"
+					]
+				}
+			],
+			"description": "List of key/value pairs of managed attributes."
+		},
+		"unmanagedAttributes": {
+			"type": "array",
+			"items": [
+				{
+					"type": [
+						"object"
+					]
+				}
+			],
+			"description": "List of key/value pairs of unmanaged attributes."
+		}
+	}
 }
