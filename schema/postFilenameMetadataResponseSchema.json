@@ -1,8 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"$id": "http://localhost:8080/json-schema/returnedMetadataSchema.json",
+	"$id": "http://localhost:8080/json-schema/postFilenameMetadataResponseSchema.json",
 	"$base": "https://localhost:8080/api/",
-	"title": "The filename parse response schema.",
+	"title": "Schema representing the response from extracting metadata from a filename and a strategy.",
 	"type": "object",
 	"required": [
 		"data"
@@ -17,7 +17,7 @@
 				"attributes": {
 					"capturedAttributes": {
 						"type": "array",
-						"description": "The attributes returned from file name parsing.",
+						"description": "The attributes returned from filename parsing.",
 						"items": {
 							"type": "object"
 						}

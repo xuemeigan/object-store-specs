@@ -2,7 +2,7 @@
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "http://localhost:8080/json-schema/postFilenameMetadataRequestSchema.json",
 	"$base": "https://localhost:8080/api/",
-	"title": "The filename parse request schema.",
+	"title": "Schema representing the request to extract metadata from a filname and a strategy.",
 	"type": "object",
 	"required": [
 		"data"
@@ -11,7 +11,7 @@
 		"data": {
 			"required": [
 				"fileName",
-				"strategyName"
+				"strategyId"
 			],
 			"type": "object",
 			"properties": {
@@ -20,9 +20,9 @@
 						"type": "string",
 						"description": "The file name to be parsed."
 					},
-					"strategyName": {
-						"type": "string",
-						"description": "Name of the strategy being used."
+					"strategyId": {
+						"type": "integer",
+						"description": "Identifier of the strategy being used to parse the filename."
 					}
 				}
 			}

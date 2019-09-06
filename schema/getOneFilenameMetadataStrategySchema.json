@@ -2,7 +2,7 @@
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "http://localhost:8080/json-schema/getOneFilenameMetadataStrategySchema.json",
 	"$base": "https://localhost:8080/api/",
-	"title": "The strategy creation schema.",
+	"title": "Schema representing the filname metadata extraction strategy.",
 	"type": "object",
 	"required": [
 		"data"
@@ -18,32 +18,27 @@
 			],
 			"properties": {
 				"id": {
-					"type": "string",
-					"description": "Identifier of the strategy."
+					"type": "integer",
+					"description": "Identifier of the strategy. Server generated."
 				},
 				"type": {
 					"const": "strategy",
 					"description": "The strategy used to parse a file name."
 				},
 				"attributes": {
-					"strategy": {
-						"type": "object",
-						"attributes": {
-							"strategyName": {
-								"type": "string",
-								"description": "Name of the strategy."
-							},
-							"regex": {
-								"type": "string",
-								"description": "Pattern used to parse file name."
-							},
-							"targets": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"description": "Attributes captured from file name."
-								}
-							}
+					"strategyName": {
+						"type": "string",
+						"description": "Name of the strategy."
+					},
+					"regex": {
+						"type": "string",
+						"description": "Pattern as Regex used to parse file name."
+					},
+					"targets": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"description": "List of key/value pairs matching the capture group from the regex to a managed attribute."
 						}
 					}
 				}
