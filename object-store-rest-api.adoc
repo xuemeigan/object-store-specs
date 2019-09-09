@@ -1,0 +1,29 @@
+= Object-Store REST API 
+
+== Objects (binary)
+
+FileUpload will use  https://tools.ietf.org/html/rfc2387[multipart] upload where metadata and a file can be sent in the same POST request.
+
+`POST /object`
+
+== Metadata
+
+`GET /metadata`
+
+
+== Managed Attribute
+Managed attributes are key/value pairs where the key can be dynamically created by users with admin privileges. Managed attributes can then be used by regular users
+and by filename parsing strategies.
+
+`GET /managed_attributes`
+
+
+== Filename Parsing
+
+
+`GET /filename_strategy`
+
+Filename parsing is used to automatically extract managed attributes from a filename and a pre-registered 'strategy'. Strategies are regex based
+and can only match a single managed attribute in a filename.
+
+`POST /filename_attributes_extraction`
