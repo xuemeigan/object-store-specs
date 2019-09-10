@@ -1,8 +1,8 @@
 {
-  "$id": "http://localhost:8080/json-schema/getOneMetaDataJSONSchema.json",
+  "$id": "http://localhost:8080/json-schema/getOneMetadataSchema.json",
   "base": "http://localhost:8080/api",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "getOneMetaDataJSONSchema",
+  "title": "The metadata schema",
   "description": "Metadata schema for all types of objects",
   "type": "object",
   "required": [
