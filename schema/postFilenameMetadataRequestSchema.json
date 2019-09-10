@@ -14,7 +14,8 @@
 			"properties": {
 				"attributes": {
 					"required" : [
-						"fileName"
+						"fileName",
+						"strategyId"
 					],
 					"properties": {
 						"fileName": {
