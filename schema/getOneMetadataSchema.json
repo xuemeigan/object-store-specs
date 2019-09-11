@@ -29,35 +29,34 @@
           "description": "Schema representing the metadata associated with objects",
           "type": "object",
           "required": [
-            "dateCreated",
-            "mediaType",
-            "createdBy",
-            "copyrightOwner",
-            "license",
-            "objectType"
+            "dcFormat",
+            "dcType",
+            "acDigitizationDate",
+            "acLicenseURL",
+            "dcRights"
           ],
           "additionalProperties": true,
           "properties": {
-            "mediaType": {
+            "dcFormat": {
               "type": "string",
-              "description": "IANA media type."
+              "description": "A string describing the technical format of the resource. IANA media type. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#dc:format"
             },
-            "objectType": {
+            "dcType": {
               "enum": [
                 "Image",
-                "Audio",
-                "Video",
-                "Document"
+                "MovingImage",
+                "Sound",
+                "Text"
               ],
-              "description": "Type of object stored. Higher level than mediaType."
+              "description": "Type of object stored. Higher level than mediaType. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#dc:type"
             },
-            "dateCreated": {
+            "acDigitizationDate": {
               "type": "string",
-              "description": "Date representing when object has been initialy created."
+              "description": "Date (ISO 8601 Date/Time) the first digital version was created. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:digitizationDate"
             },
-            "dateUploaded": {
+            "xmpMetadataDate": {
               "type": "string",
-              "description": "Date representing when the associated object got successfully uploaded. Automaticaly set."
+              "description": "Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automaticaly set. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#xmp:MetadataDate"
             },
             "createdBy": {
               "type": "string",
@@ -67,13 +66,21 @@
               "type": "string",
               "description": "Reference to the person who uploaded the object."
             },
-            "hash": {
+            "acHashFunction": {
               "type": "string",
-              "description": "Hash of the uploaded object. Automaticaly generated on successful file upload."
+              "description": "The cryptographic hash function used to compute the value given in acHashValue. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:hashFunction"
             },
-            "copyrightOwner": {
+            "acHashValue": {
               "type": "string",
-              "description": "Copyright owner of the object."
+              "description": "Hash of the uploaded object. Automaticaly generated on successful file upload. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:hashValue"
+            },
+            "acLicenseURL": {
+              "type": "string",
+              "description": " https://terms.tdwg.org/wiki/Audubon_Core_Term_List#License_URL"
+            },
+            "dcRights": {
+              "type": "string",
+              "description": "Information about rights held in and over the resource. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#dc:rights"
             },
             "managedAttributes": {
               "type": "array",
@@ -97,9 +104,9 @@
               ],
               "description": "List of key/value pairs of unmanaged attributes."
             },
-            "derivedFrom": {
+            "acDerivedFrom": {
               "type": "string",
-              "description": "A URL that points to a meta data object that this meta derived from,such as in a thumbnail case",
+              "description": "A URL that points to a meta data object that this meta derived from, such as a thumbnail. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:derivedFrom",
               "pattern": "^(http://|https://)+"
             }
           }
