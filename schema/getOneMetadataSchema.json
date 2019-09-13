@@ -22,7 +22,7 @@
           "type": "string"
         },
         "type": {
-          "const": "metaData",
+          "const": "metadata",
           "description": "The type of the object of the data being returned."
         },
         "attributes": {
@@ -32,14 +32,15 @@
             "dcFormat",
             "dcType",
             "acDigitizationDate",
-            "acLicenseURL",
+            "xmpUsageTerms",
+            "xmpRightsWebStatement",
             "dcRights"
           ],
           "additionalProperties": true,
           "properties": {
             "dcFormat": {
               "type": "string",
-              "description": "A string describing the technical format of the resource. IANA media type. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#dc:format"
+              "description": "A string describing the technical format of the resource. IANA media type. https://tdwg.github.io/ac/termlist/#dc_format"
             },
             "dcType": {
               "enum": [
@@ -48,15 +49,15 @@
                 "Sound",
                 "Text"
               ],
-              "description": "Type of object stored. Higher level than mediaType. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#dc:type"
+              "description": "Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type"
             },
             "acDigitizationDate": {
               "type": "string",
-              "description": "Date (ISO 8601 Date/Time) the first digital version was created. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:digitizationDate"
+              "description": "Date (ISO 8601 Date/Time) the first digital version was created. https://tdwg.github.io/ac/termlist/#ac_digitizationDate"
             },
             "xmpMetadataDate": {
               "type": "string",
-              "description": "Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automaticaly set. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#xmp:MetadataDate"
+              "description": "Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automaticaly set. https://tdwg.github.io/ac/termlist/#xmp_MetadataDate"
             },
             "createdBy": {
               "type": "string",
@@ -68,19 +69,23 @@
             },
             "acHashFunction": {
               "type": "string",
-              "description": "The cryptographic hash function used to compute the value given in acHashValue. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:hashFunction"
+              "description": "The cryptographic hash function used to compute the value given in acHashValue. https://tdwg.github.io/ac/termlist/#ac_hashFunction"
             },
             "acHashValue": {
               "type": "string",
-              "description": "Hash of the uploaded object. Automaticaly generated on successful file upload. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:hashValue"
+              "description": "Hash of the uploaded object. Automaticaly generated on successful file upload. https://tdwg.github.io/ac/termlist/#ac_hashValue"
             },
-            "acLicenseURL": {
+            "xmpUsageTerms": {
               "type": "string",
-              "description": " https://terms.tdwg.org/wiki/Audubon_Core_Term_List#License_URL"
+              "description": "Text instructions on how a resource can be legally used. https://tdwg.github.io/ac/termlist/#xmpRights_UsageTerms"
+            }, 
+            "xmpRightsWebStatement": {
+              "type": "string",
+              "description": "A URL defining or further elaborating on the license statement. https://tdwg.github.io/ac/termlist/#xmpRights_WebStatement"
             },
             "dcRights": {
               "type": "string",
-              "description": "Information about rights held in and over the resource. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#dc:rights"
+              "description": "Information about rights held in and over the resource. https://tdwg.github.io/ac/termlist/#dc_rights"
             },
             "managedAttributes": {
               "type": "array",
@@ -98,15 +103,15 @@
               "items": [
                 {
                   "type": [
-                    "object"
+                    "string"
                   ]
                 }
               ],
-              "description": "List of key/value pairs of unmanaged attributes."
+              "description": "List of key(tag). Similar to https://tdwg.github.io/ac/termlist/#ac_tag"
             },
             "acDerivedFrom": {
               "type": "string",
-              "description": "A URL that points to a meta data object that this meta derived from, such as a thumbnail. https://terms.tdwg.org/wiki/Audubon_Core_Term_List#ac:derivedFrom",
+              "description": "A URL that points to a meta data object that this meta derived from, such as a thumbnail. https://tdwg.github.io/ac/termlist/#ac_derivedFrom",
               "pattern": "^(http://|https://)+"
             }
           }
