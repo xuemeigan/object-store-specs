@@ -31,7 +31,6 @@
           "required": [
             "dateCreated",
             "mediaType",
-            "createdBy",
             "copyrightOwner",
             "license",
             "objectType"
@@ -58,11 +57,7 @@
             "dateUploaded": {
               "type": "string",
               "description": "Date representing when the associated object got successfully uploaded. Automaticaly set."
-            },
-            "createdBy": {
-              "type": "string",
-              "description": "Reference to the person who created the object."
-            },
+            },            
             "uploadedBy": {
               "type": "string",
               "description": "Reference to the person who uploaded the object."
@@ -112,7 +107,26 @@
                   "$ref": "common/relationship.json"
                 }
               ]
-            }
+            },
+            "dcCreater": {
+              "data": { 
+              "type": "object",
+              "required": [
+        	     "id",
+			     "type",
+               ],
+               "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "The id of the dcCreater."
+                  },
+                  "type": {
+          	        "const": "agent",
+                    "description": "The type of the dcCreater object."
+                  }
+                }      			  
+              }              
+            }            
           }
         }
       }
