@@ -108,7 +108,7 @@
                 }
               ]
             },
-            "dcCreater": {
+            "dcCreator": {
               "data": { 
               "type": "object",
               "required": [
