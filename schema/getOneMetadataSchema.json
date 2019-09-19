@@ -59,10 +59,6 @@
               "type": "string",
               "description": "Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automaticaly set. https://tdwg.github.io/ac/termlist/#xmp_MetadataDate"
             },
-            "createdBy": {
-              "type": "string",
-              "description": "Reference to the person who created the object."
-            },
             "uploadedBy": {
               "type": "string",
               "description": "Reference to the person who uploaded the object."
@@ -124,7 +120,26 @@
                   "$ref": "common/relationship.json"
                 }
               ]
-            }
+            },
+            "dcCreator": {
+              "data": { 
+              "type": "object",
+              "required": [
+                 "id",
+                 "type",
+               ],
+               "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "The id of the dcCreater."
+                  },
+                  "type": {
+                    "const": "agent",
+                    "description": "The type of the dcCreater object."
+                  }
+                }      			  
+              }              
+            }            
           }
         }
       }
