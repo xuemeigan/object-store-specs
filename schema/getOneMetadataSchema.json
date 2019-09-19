@@ -125,8 +125,8 @@
               "data": { 
               "type": "object",
               "required": [
-        	     "id",
-			     "type",
+                 "id",
+                 "type",
                ],
                "properties": {
                   "id": {
@@ -134,7 +134,7 @@
                     "description": "The id of the dcCreater."
                   },
                   "type": {
-          	        "const": "agent",
+                    "const": "agent",
                     "description": "The type of the dcCreater object."
                   }
                 }      			  
