@@ -15,7 +15,7 @@ install:
 
 script:
 - generate_api_doc schema/ schema/
-- for f in schema/*.adoc; do filename=$(basename -s .adoc $f); pandoc $f -s -o schema/ schema/$filename.html; done #Pandoc command for generating HTML from Asciidoc
+- for f in schema/*.adoc; do filename=$(basename -s .adoc $f); pandoc $f -s -o schema/$filename.html; done #Pandoc command for generating HTML from Asciidoc
 
 deploy:
 provider: pages
