@@ -13,6 +13,9 @@ addons:
 install:
  - pip install git+https://github.com/AAFC-BICoE/json-schema2adoc.git@dev
 
+before_script:
+ - mkdir schema/schema_html
+
 script:
  - generate_api_doc schema/ schema/
  - for f in schema/*.adoc; do filename=$(basename -s .adoc $f); pandoc $f -s -o schema/schema_html/$filename.html; done #Pandoc command for generating HTML from Asciidoc
