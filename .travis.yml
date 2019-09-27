@@ -18,14 +18,12 @@ before_script:
 
 script:
  - generate_api_doc schema/ schema/
- - for f in schema/*.adoc; do filename=$(basename -s .adoc $f); pandoc $f -s -o schema/schema_html/$filename.html; done #Pandoc command for generating HTML from Asciidoc
+ - pandoc object-store-rest-api.adoc -s -o index.html
 
 deploy:
  provider: pages
  skip_cleanup: true
  github_token: $GITHUB_TOKEN 
- local_dir: schema/schema_html
  keep_history: true
- verbose: true
  on:
   branch: json-schema
