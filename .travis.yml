@@ -13,14 +13,18 @@ addons:
 install:
  - pip install git+https://github.com/AAFC-BICoE/json-schema2adoc.git@dev
 
+before_script:
+ -mkdir index
+
 script:
  - generate_api_doc schema/ schema/
- - pandoc object-store-rest-api.adoc -s -o index.html
+ - pandoc object-store-rest-api.adoc -s -o index/index.html
 
 deploy:
  provider: pages
  skip_cleanup: true
  github_token: $GITHUB_TOKEN 
+ local_dir: index
  keep_history: true
  on:
   branch: json-schema
