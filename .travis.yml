@@ -14,7 +14,7 @@ install:
  - pip install git+https://github.com/AAFC-BICoE/json-schema2adoc.git@dev
 
 before_script:
- -mkdir index
+ - mkdir index
 
 script:
  - generate_api_doc schema/ schema/
