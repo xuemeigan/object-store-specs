@@ -4,11 +4,11 @@ python:
  - "3.7" 
 
 before_install: 
- - sudo apt-get install pandoc
+ - sudo apt-get install y asciidoctor
 
 addons:
  apt_packages:
-  - pandoc
+  - asciidoctor
 
 install:
  - pip install git+https://github.com/AAFC-BICoE/json-schema2adoc.git@dev
@@ -18,7 +18,7 @@ before_script:
 
 script:
  - generate_api_doc schema/ schema/
- - pandoc object-store-rest-api.adoc -s -o index/index.html
+ - asciidoctor -o index/index.html object-store-rest-api.adoc
 
 deploy:
  provider: pages
