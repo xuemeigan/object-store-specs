@@ -8,7 +8,7 @@ Represents the metatadata of the object held in the object store.
 `GET /objects/{id}`
 `PUT /objects/{id}`
 
-include::getOneMetaDataJSONSchema.adoc[]
+include::schema/getOneMetaDataJSONSchema.adoc[]
 
 == Objects (file)
 
@@ -28,7 +28,7 @@ and by filename parsing strategies.
 
 `GET /filename-strategy`
 
-include::getOneFilenameMetadataStrategySchema.adoc[]
+include::schema/getOneFilenameMetadataStrategySchema.adoc[]
 
 Filename parsing is used to automatically extract managed attributes from a filename and a pre-registered 'strategy'. Strategies are regex based
 and can only match a single managed attribute in a filename.
@@ -37,9 +37,9 @@ and can only match a single managed attribute in a filename.
 
 Request:
 
-include::postFilenameMetadataRequestSchema.adoc[]
+include::schema/postFilenameMetadataRequestSchema.adoc[]
 
 Response:
 
-include::postFilenameMetadataResponseSchema.adoc[]
+include::schema/postFilenameMetadataResponseSchema.adoc[]
 
