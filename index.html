@@ -433,9 +433,167 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <code>GET /objects/{id}</code>
 <code>PUT /objects/{id}</code></p>
 </div>
-<div class="paragraph">
-<p>Unresolved directive in object-store-rest-api.adoc - include::schema/getOneMetaDataJSONSchema.adoc[]</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_the_metadata_schema">The metadata schema</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Metadata schema for all types of objects</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dcFormat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A string describing the technical format of the resource. IANA media type. <a href="https://tdwg.github.io/ac/termlist/#dc_format" class="bare">https://tdwg.github.io/ac/termlist/#dc_format</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dcType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type of object stored. Higher level than mediaType. <a href="https://tdwg.github.io/ac/termlist/#dc_type" class="bare">https://tdwg.github.io/ac/termlist/#dc_type</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">acDigitizationDate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date (ISO 8601 Date/Time) the first digital version was created. <a href="https://tdwg.github.io/ac/termlist/#ac_digitizationDate" class="bare">https://tdwg.github.io/ac/termlist/#ac_digitizationDate</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xmpMetadataDate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automaticaly set. <a href="https://tdwg.github.io/ac/termlist/#xmp_MetadataDate" class="bare">https://tdwg.github.io/ac/termlist/#xmp_MetadataDate</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uploadedBy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to the person who uploaded the object.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">acHashFunction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The cryptographic hash function used to compute the value given in acHashValue. <a href="https://tdwg.github.io/ac/termlist/#ac_hashFunction" class="bare">https://tdwg.github.io/ac/termlist/#ac_hashFunction</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">acHashValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hash of the uploaded object. Automaticaly generated on successful file upload. <a href="https://tdwg.github.io/ac/termlist/#ac_hashValue" class="bare">https://tdwg.github.io/ac/termlist/#ac_hashValue</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xmpUsageTerms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text instructions on how a resource can be legally used. <a href="https://tdwg.github.io/ac/termlist/#xmpRights_UsageTerms" class="bare">https://tdwg.github.io/ac/termlist/#xmpRights_UsageTerms</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xmpRightsWebStatement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A URL defining or further elaborating on the license statement. <a href="https://tdwg.github.io/ac/termlist/#xmpRights_WebStatement" class="bare">https://tdwg.github.io/ac/termlist/#xmpRights_WebStatement</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dcRights</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Information about rights held in and over the resource. <a href="https://tdwg.github.io/ac/termlist/#dc_rights" class="bare">https://tdwg.github.io/ac/termlist/#dc_rights</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">managedAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of key/value pairs of managed attributes.</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unmanagedAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of key(tag). Similar to <a href="https://tdwg.github.io/ac/termlist/#ac_tag" class="bare">https://tdwg.github.io/ac/termlist/#ac_tag</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">acDerivedFrom</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A URL that points to a meta data object that this meta derived from, such as a thumbnail. <a href="https://tdwg.github.io/ac/termlist/#ac_derivedFrom" class="bare">https://tdwg.github.io/ac/termlist/#ac_derivedFrom</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Relationships</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dcCreator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect1">
@@ -476,7 +634,7 @@ and by filename parsing strategies.</p>
 <p>Schema representing the filename metadata extraction strategy.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. Properties</caption>
+<caption class="title">Table 4. Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -507,7 +665,7 @@ and by filename parsing strategies.</p>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 2. Attributes</caption>
+<caption class="title">Table 5. Attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -562,7 +720,7 @@ and can only match a single managed attribute in a filename.</p>
 <p>Schema representing the request to extract metadata from a filename and a strategy.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. Attributes</caption>
+<caption class="title">Table 6. Attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -604,7 +762,7 @@ and can only match a single managed attribute in a filename.</p>
 <p>Schema representing the response from extracting metadata from a filename and a strategy.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 4. Attributes</caption>
+<caption class="title">Table 7. Attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -633,7 +791,7 @@ and can only match a single managed attribute in a filename.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-01 16:48:14 UTC
+Last updated 2019-10-01 16:52:06 UTC
 </div>
 </div>
 </body>
