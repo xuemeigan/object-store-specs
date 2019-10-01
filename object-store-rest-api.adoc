@@ -8,7 +8,7 @@ Represents the metatadata of the object held in the object store.
 `GET /objects/{id}`
 `PUT /objects/{id}`
 
-include::schema/getOneMetaDataJSONSchema.adoc[]
+include::schema/getOneMetadataSchema.adoc[]
 
 == Objects (file)
 
