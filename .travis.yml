@@ -1,0 +1,30 @@
+language: python
+
+python:
+ - "3.7" 
+
+before_install: 
+ - sudo apt-get install -y asciidoctor
+
+addons:
+ apt_packages:
+  - asciidoctor
+
+install:
+ - pip install git+https://github.com/AAFC-BICoE/json-schema2adoc.git@dev
+
+before_script:
+ - mkdir adoc
+
+script:
+ - generate_api_doc schema/ adoc/
+ - asciidoctor -o adoc/index.html object-store-rest-api.adoc
+
+deploy:
+ provider: pages
+ skip_cleanup: true
+ github_token: $GITHUB_TOKEN 
+ local_dir: adoc
+ keep_history: true
+ on:
+  branch: json-schema
