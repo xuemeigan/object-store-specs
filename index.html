@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <code>PUT /objects/{id}</code></p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in object-store-rest-api.adoc - include::getOneMetaDataJSONSchema.adoc[]</p>
+<p>Unresolved directive in object-store-rest-api.adoc - include::schema/getOneMetaDataJSONSchema.adoc[]</p>
 </div>
 </div>
 </div>
@@ -467,9 +467,82 @@ and by filename parsing strategies.</p>
 <div class="paragraph">
 <p><code>GET /filename-strategy</code></p>
 </div>
-<div class="paragraph">
-<p>Unresolved directive in object-store-rest-api.adoc - include::getOneFilenameMetadataStrategySchema.adoc[]</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_the_filename_metadata_strategy_schema">The filename metadata strategy schema</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Schema representing the filename metadata extraction strategy.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">integer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier of the strategy. Server generated.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">strategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 2. Attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">strategyName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the strategy.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">regex</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pattern as Regex used to parse file name.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">targets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>Filename parsing is used to automatically extract managed attributes from a filename and a pre-registered 'strategy'. Strategies are regex based
 and can only match a single managed attribute in a filename.</p>
@@ -480,21 +553,87 @@ and can only match a single managed attribute in a filename.</p>
 <div class="paragraph">
 <p>Request:</p>
 </div>
-<div class="paragraph">
-<p>Unresolved directive in object-store-rest-api.adoc - include::postFilenameMetadataRequestSchema.adoc[]</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_the_filename_metadata_request_schema">The filename metadata request schema</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Schema representing the request to extract metadata from a filename and a strategy.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 3. Attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fileName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The file name to be parsed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">strategyId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">integer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier of the strategy being used to parse the filename.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>Response:</p>
 </div>
-<div class="paragraph">
-<p>Unresolved directive in object-store-rest-api.adoc - include::postFilenameMetadataResponseSchema.adoc[]</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_the_filename_metadata_response_schema">The filename metadata response schema</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Schema representing the response from extracting metadata from a filename and a strategy.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. Attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">capturedAttributes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The attributes returned from filename parsing.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-01 16:22:10 UTC
+Last updated 2019-10-01 16:48:14 UTC
 </div>
 </div>
 </body>
