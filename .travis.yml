@@ -17,7 +17,7 @@ before_script:
  - mkdir adoc
 
 script:
- - generate_api_doc schema/ adoc/
+ - generate_api_doc schema/ schema/
  - asciidoctor -o adoc/index.html object-store-rest-api.adoc
 
 deploy:
