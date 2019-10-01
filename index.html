@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<title>Object-Store REST API</title>
+<title>DINA Object-Store REST API</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -419,7 +419,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>Object-Store REST API</h1>
+<h1>DINA Object-Store REST API</h1>
 </div>
 <div id="content">
 <div class="sect1">
@@ -620,6 +620,82 @@ and by filename parsing strategies.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_the_managed_attributes_schema">The managed attributes schema</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The managed attributes for the media metadata</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 4. Properties</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ref to the identifier of the attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">managedAttribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 5. Attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ref to the name of the managed attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">managedAttributeType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">['integer', 'string']</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ref to the type of the managed attribute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">acceptedValues</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ref to the accepted values of the named attribute if any</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_filename_parsing">Filename Parsing</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -634,7 +710,7 @@ and by filename parsing strategies.</p>
 <p>Schema representing the filename metadata extraction strategy.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 4. Properties</caption>
+<caption class="title">Table 6. Properties</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -665,7 +741,7 @@ and by filename parsing strategies.</p>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 5. Attributes</caption>
+<caption class="title">Table 7. Attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -720,7 +796,7 @@ and can only match a single managed attribute in a filename.</p>
 <p>Schema representing the request to extract metadata from a filename and a strategy.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 6. Attributes</caption>
+<caption class="title">Table 8. Attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -762,7 +838,7 @@ and can only match a single managed attribute in a filename.</p>
 <p>Schema representing the response from extracting metadata from a filename and a strategy.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 7. Attributes</caption>
+<caption class="title">Table 9. Attributes</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -791,7 +867,7 @@ and can only match a single managed attribute in a filename.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-01 16:52:06 UTC
+Last updated 2019-10-01 17:20:22 UTC
 </div>
 </div>
 </body>
