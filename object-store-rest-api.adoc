@@ -1,39 +1,60 @@
 = DINA Object-Store REST API 
 
-== Objects
+All API requests and responses are following https://jsonapi.org/[JSON API Specification]. The JSON API envelope is asbtracted in the following document to improve readability.
+
+== Object
 
 Represents the metatadata of the object held in the object store.
 
-`POST /objects`
-`GET /objects/{id}`
-`PUT /objects/{id}`
+Operations:
+
+* `POST /object`
+* `GET /object/{id}`
+* `PUT /object/{id}`
 
 include::schema/getOneMetadataSchema.adoc[]
 
-== Objects (file)
+== Object (file)
 
 Uses https://tools.ietf.org/html/rfc2387[multipart] upload.
 
-`PUT /objects/{id}/file`
+Operation:
+
+* `PUT /objects/{id}/file`
 
 == Managed Attributes
+
 Managed attributes are key/value pairs where the key can be dynamically created by users with admin privileges. Managed attributes can then be used by regular users
 and by filename parsing strategies.
 
-`GET /managed-attributes`
+Operations:
+
+* `POST /managed-attributes` (admin only)
+* `GET /managed-attributes/{id}`
+* `PUT /managed-attributes/{id}` (admin only)
+* `DELETE /managed-attributes/{id}` (admin only)
 
 include::schema/getOneManagedAttributeSchema.adoc[]
 
-== Filename Parsing
+== Filename Parsing Strategy
 
-`GET /filename-strategy`
+Operations:
+
+* `POST /filename-strategy` (admin only)
+* `GET /filename-strategy/{id}`
+* `PUT /filename-strategy/{id}` (admin only)
+* `DELETE /filename-strategy/{id}` (admin only)
 
 include::schema/getOneFilenameMetadataStrategySchema.adoc[]
 
 Filename parsing is used to automatically extract managed attributes from a filename and a pre-registered 'strategy'. Strategies are regex based
 and can only match a single managed attribute in a filename.
 
-`POST /filename_attributes_extraction`
+== Filename Attributes Extraction
+
+Operation:
+
+* `POST /filename_attributes_extraction`
 
 Request:
 

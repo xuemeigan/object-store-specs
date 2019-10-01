@@ -2,7 +2,7 @@
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "http://localhost:8080/json-schema/postFilenameMetadataResponseSchema.json",
 	"$base": "https://localhost:8080/api/",
-	"title" : "The filename metadata response schema",
+	"title" : "Filename metadata POST response schema",
 	"description": "Schema representing the response from extracting metadata from a filename and a strategy.",
 	"type": "object",
 	"required": [
