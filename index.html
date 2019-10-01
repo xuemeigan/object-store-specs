@@ -422,22 +422,37 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>DINA Object-Store REST API</h1>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>All API requests and responses are following <a href="https://jsonapi.org/">JSON API Specification</a>. The JSON API envelope is asbtracted in the following document to improve readability.</p>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="_objects">Objects</h2>
+<h2 id="_object">Object</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Represents the metatadata of the object held in the object store.</p>
 </div>
 <div class="paragraph">
-<p><code>POST /objects</code>
-<code>GET /objects/{id}</code>
-<code>PUT /objects/{id}</code></p>
+<p>Operations:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>POST /object</code></p>
+</li>
+<li>
+<p><code>GET /object/{id}</code></p>
+</li>
+<li>
+<p><code>PUT /object/{id}</code></p>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_the_metadata_schema">The metadata schema</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_the_object_metadata_schema">The object metadata schema</h3>
 <div class="paragraph">
 <p>Metadata schema for all types of objects</p>
 </div>
@@ -596,14 +611,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </table>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_objects_file">Objects (file)</h2>
+<h2 id="_object_file">Object (file)</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Uses <a href="https://tools.ietf.org/html/rfc2387">multipart</a> upload.</p>
 </div>
 <div class="paragraph">
+<p>Operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
 <p><code>PUT /objects/{id}/file</code></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -615,13 +638,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 and by filename parsing strategies.</p>
 </div>
 <div class="paragraph">
-<p><code>GET /managed-attributes</code></p>
+<p>Operations:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>POST /managed-attributes</code> (admin only)</p>
+</li>
+<li>
+<p><code>GET /managed-attributes/{id}</code></p>
+</li>
+<li>
+<p><code>PUT /managed-attributes/{id}</code> (admin only)</p>
+</li>
+<li>
+<p><code>DELETE /managed-attributes/{id}</code> (admin only)</p>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_the_managed_attributes_schema">The managed attributes schema</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_the_managed_attributes_schema">The managed attributes schema</h3>
 <div class="paragraph">
 <p>The managed attributes for the media metadata</p>
 </div>
@@ -695,17 +731,31 @@ and by filename parsing strategies.</p>
 </table>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_filename_parsing">Filename Parsing</h2>
+<h2 id="_filename_parsing_strategy">Filename Parsing Strategy</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>GET /filename-strategy</code></p>
+<p>Operations:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>POST /filename-strategy</code> (admin only)</p>
+</li>
+<li>
+<p><code>GET /filename-strategy/{id}</code></p>
+</li>
+<li>
+<p><code>PUT /filename-strategy/{id}</code> (admin only)</p>
+</li>
+<li>
+<p><code>DELETE /filename-strategy/{id}</code> (admin only)</p>
+</li>
+</ul>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_the_filename_metadata_strategy_schema">The filename metadata strategy schema</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_the_filename_metadata_strategy_schema">The filename metadata strategy schema</h3>
 <div class="paragraph">
 <p>Schema representing the filename metadata extraction strategy.</p>
 </div>
@@ -781,17 +831,27 @@ and by filename parsing strategies.</p>
 <p>Filename parsing is used to automatically extract managed attributes from a filename and a pre-registered 'strategy'. Strategies are regex based
 and can only match a single managed attribute in a filename.</p>
 </div>
-<div class="paragraph">
-<p><code>POST /filename_attributes_extraction</code></p>
-</div>
-<div class="paragraph">
-<p>Request:</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_filename_metadata_request_schema">The filename metadata request schema</h2>
+<h2 id="_filename_attributes_extraction">Filename Attributes Extraction</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>POST /filename_attributes_extraction</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Request:</p>
+</div>
+<div class="sect2">
+<h3 id="_filename_metadata_post_request_schema">Filename metadata POST request schema</h3>
 <div class="paragraph">
 <p>Schema representing the request to extract metadata from a filename and a strategy.</p>
 </div>
@@ -830,10 +890,8 @@ and can only match a single managed attribute in a filename.</p>
 <p>Response:</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_the_filename_metadata_response_schema">The filename metadata response schema</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_filename_metadata_post_response_schema">Filename metadata POST response schema</h3>
 <div class="paragraph">
 <p>Schema representing the response from extracting metadata from a filename and a strategy.</p>
 </div>
@@ -865,9 +923,10 @@ and can only match a single managed attribute in a filename.</p>
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-01 17:20:22 UTC
+Last updated 2019-10-01 18:43:39 UTC
 </div>
 </div>
 </body>
