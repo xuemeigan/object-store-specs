@@ -1,4 +1,4 @@
-= Object-Store REST API 
+= DINA Object-Store REST API 
 
 == Objects
 
@@ -22,9 +22,9 @@ and by filename parsing strategies.
 
 `GET /managed-attributes`
 
+include::schema/getOneManagedAttributeSchema.adoc[]
 
 == Filename Parsing
-
 
 `GET /filename-strategy`
 
