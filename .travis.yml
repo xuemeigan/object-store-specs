@@ -13,9 +13,12 @@ addons:
 install:
  - pip install git+https://github.com/AAFC-BICoE/json-schema2adoc.git@dev
 
+before_script:
+ - mkdir schema/index
+
 script:
  - generate_api_doc schema/ schema/
- - asciidoctor -o schema/index.html object-store-rest-api.adoc
+ - asciidoctor -o schema/index/index.html object-store-rest-api.adoc
 
 deploy:
  provider: pages
