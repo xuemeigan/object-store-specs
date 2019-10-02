@@ -1,4 +1,8 @@
-= DINA Object-Store REST API 
+:sectnums:
+:toc: left
+
+= DINA Object-Store REST API
+
 
 All API requests and responses are following https://jsonapi.org/[JSON API Specification]. The JSON API envelope is asbtracted in the following document to improve readability.
 
