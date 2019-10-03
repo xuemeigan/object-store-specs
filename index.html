@@ -417,533 +417,312 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .show-for-print{display:inherit!important}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
 <h1>DINA Object-Store REST API</h1>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_object">1. Object</a>
-<ul class="sectlevel2">
-<li><a href="#_the_object_metadata_schema">1.1. The object metadata schema</a></li>
-</ul>
-</li>
-<li><a href="#_object_file">2. Object (file)</a></li>
-<li><a href="#_managed_attributes">3. Managed Attributes</a>
-<ul class="sectlevel2">
-<li><a href="#_the_managed_attributes_schema">3.1. The managed attributes schema</a></li>
-</ul>
-</li>
-<li><a href="#_filename_parsing_strategy">4. Filename Parsing Strategy</a>
-<ul class="sectlevel2">
-<li><a href="#_the_filename_metadata_strategy_schema">4.1. The filename metadata strategy schema</a></li>
-</ul>
-</li>
-<li><a href="#_filename_attributes_extraction">5. Filename Attributes Extraction</a>
-<ul class="sectlevel2">
-<li><a href="#_filename_metadata_post_request_schema">5.1. Filename metadata POST request schema</a></li>
-<li><a href="#_filename_metadata_post_response_schema">5.2. Filename metadata POST response schema</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
 <div class="paragraph">
-<p>All API requests and responses are following <a href="https://jsonapi.org/">JSON API Specification</a>. The JSON API envelope is asbtracted in the following document to improve readability.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_object">1. Object</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Represents the metatadata of the object held in the object store.</p>
+<p>All API requests and responses are following <a href="https://jsonapi.org/">JSON API Specification</a>. The JSON API envelope is abstracted in the following document to improve readability.</p>
 </div>
 <div class="paragraph">
-<p>Operations:</p>
+<p>JSON API structure:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>POST /object</code></p>
-</li>
-<li>
-<p><code>GET /object/{id}</code></p>
-</li>
-<li>
-<p><code>PUT /object/{id}</code></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_the_object_metadata_schema">1.1. The object metadata schema</h3>
-<div class="paragraph">
-<p>Metadata schema for all types of objects</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier of the object as UUID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all">
-<caption class="title">Table 2. Attributes</caption>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required?</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dcFormat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A string describing the technical format of the resource. IANA media type. <a href="https://tdwg.github.io/ac/termlist/#dc_format" class="bare">https://tdwg.github.io/ac/termlist/#dc_format</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dcType</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type of object stored. Higher level than mediaType. <a href="https://tdwg.github.io/ac/termlist/#dc_type" class="bare">https://tdwg.github.io/ac/termlist/#dc_type</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">acDigitizationDate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Date (ISO 8601 Date/Time) the first digital version was created. <a href="https://tdwg.github.io/ac/termlist/#ac_digitizationDate" class="bare">https://tdwg.github.io/ac/termlist/#ac_digitizationDate</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">xmpMetadataDate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automaticaly set. <a href="https://tdwg.github.io/ac/termlist/#xmp_MetadataDate" class="bare">https://tdwg.github.io/ac/termlist/#xmp_MetadataDate</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uploadedBy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to the person who uploaded the object.</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">acHashFunction</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The cryptographic hash function used to compute the value given in acHashValue. <a href="https://tdwg.github.io/ac/termlist/#ac_hashFunction" class="bare">https://tdwg.github.io/ac/termlist/#ac_hashFunction</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">acHashValue</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hash of the uploaded object. Automaticaly generated on successful file upload. <a href="https://tdwg.github.io/ac/termlist/#ac_hashValue" class="bare">https://tdwg.github.io/ac/termlist/#ac_hashValue</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">xmpUsageTerms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Text instructions on how a resource can be legally used. <a href="https://tdwg.github.io/ac/termlist/#xmpRights_UsageTerms" class="bare">https://tdwg.github.io/ac/termlist/#xmpRights_UsageTerms</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">xmpRightsWebStatement</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A URL defining or further elaborating on the license statement. <a href="https://tdwg.github.io/ac/termlist/#xmpRights_WebStatement" class="bare">https://tdwg.github.io/ac/termlist/#xmpRights_WebStatement</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dcRights</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Information about rights held in and over the resource. <a href="https://tdwg.github.io/ac/termlist/#dc_rights" class="bare">https://tdwg.github.io/ac/termlist/#dc_rights</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">managedAttributes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of key/value pairs of managed attributes.</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">unmanagedAttributes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of key(tag). Similar to <a href="https://tdwg.github.io/ac/termlist/#ac_tag" class="bare">https://tdwg.github.io/ac/termlist/#ac_tag</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">acDerivedFrom</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A URL that points to a meta data object that this meta derived from, such as a thumbnail. <a href="https://tdwg.github.io/ac/termlist/#ac_derivedFrom" class="bare">https://tdwg.github.io/ac/termlist/#ac_derivedFrom</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 3. Relationships</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">dcCreator</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_object_file">2. Object (file)</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Uses <a href="https://tools.ietf.org/html/rfc2387">multipart</a> upload.</p>
-</div>
-<div class="paragraph">
-<p>Operation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>PUT /objects/{id}/file</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_managed_attributes">3. Managed Attributes</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Managed attributes are key/value pairs where the key can be dynamically created by users with admin privileges. Managed attributes can then be used by regular users
-and by filename parsing strategies.</p>
-</div>
-<div class="paragraph">
-<p>Operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>POST /managed-attributes</code> (admin only)</p>
-</li>
-<li>
-<p><code>GET /managed-attributes/{id}</code></p>
-</li>
-<li>
-<p><code>PUT /managed-attributes/{id}</code> (admin only)</p>
-</li>
-<li>
-<p><code>DELETE /managed-attributes/{id}</code> (admin only)</p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_the_managed_attributes_schema">3.1. The managed attributes schema</h3>
-<div class="paragraph">
-<p>The managed attributes for the media metadata</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 4. Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ref to the identifier of the attribute</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">managedAttribute</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all">
-<caption class="title">Table 5. Attributes</caption>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required?</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ref to the name of the managed attribute</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">managedAttributeType</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">['integer', 'string']</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ref to the type of the managed attribute</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">acceptedValues</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ref to the accepted values of the named attribute if any</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_filename_parsing_strategy">4. Filename Parsing Strategy</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>POST /filename-strategy</code> (admin only)</p>
-</li>
-<li>
-<p><code>GET /filename-strategy/{id}</code></p>
-</li>
-<li>
-<p><code>PUT /filename-strategy/{id}</code> (admin only)</p>
-</li>
-<li>
-<p><code>DELETE /filename-strategy/{id}</code> (admin only)</p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_the_filename_metadata_strategy_schema">4.1. The filename metadata strategy schema</h3>
-<div class="paragraph">
-<p>Schema representing the filename metadata extraction strategy.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 6. Properties</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Required?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">integer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier of the strategy. Server generated.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">strategy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all">
-<caption class="title">Table 7. Attributes</caption>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required?</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">strategyName</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of the strategy.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">regex</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pattern as Regex used to parse file name.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">targets</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Filename parsing is used to automatically extract managed attributes from a filename and a pre-registered 'strategy'. Strategies are regex based
-and can only match a single managed attribute in a filename.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_filename_attributes_extraction">5. Filename Attributes Extraction</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Operation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>POST /filename_attributes_extraction</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Request:</p>
-</div>
-<div class="sect2">
-<h3 id="_filename_metadata_post_request_schema">5.1. Filename metadata POST request schema</h3>
-<div class="paragraph">
-<p>Schema representing the request to extract metadata from a filename and a strategy.</p>
-</div>
-<table class="tableblock frame-all grid-all">
-<caption class="title">Table 8. Attributes</caption>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required?</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">fileName</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">string</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The file name to be parsed.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">strategyId</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">integer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Identifier of the strategy being used to parse the filename.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Response:</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_filename_metadata_post_response_schema">5.2. Filename metadata POST response schema</h3>
-<div class="paragraph">
-<p>Schema representing the response from extracting metadata from a filename and a strategy.</p>
-</div>
-<table class="tableblock frame-all grid-all">
-<caption class="title">Table 9. Attributes</caption>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Required?</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">capturedAttributes</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">array</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The attributes returned from filename parsing.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">X</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+  "data": {
+    "type": "articles",
+    "id": "a4afa2f3-ee0a-42f2-b860-441f3fd0f20d",
+    "attributes": {
+      // ...
+    },
+    "relationships": {
+      // ...
+    }
+  }
+}
+--------
+
+The Properties section of the document includes the `type` and the `id` of the JSON API structure. Attributes and Relationships refer to their respective sections in the JSON API structure.
+
+
+== Object
+
+Represents the metatadata of the object held in the object store.
+
+Operations:
+
+* `POST /object`
+* `GET /object/{id}`
+* `PUT /object/{id}`
+
+=== The object metadata schema
+
+Metadata schema for all types of objects
+
+.Properties
+|===
+|Name |Type |Description|Required?
+
+|id
+|string
+|Identifier of the object as UUID
+|X
+
+|type
+|metadata
+|None
+|X
+|===
+.Attributes
+[options="autowidth"]
+|===
+|Name |Type |Description|Required?
+
+|dcFormat
+|string
+|A string describing the technical format of the resource. IANA media type. https://tdwg.github.io/ac/termlist/#dc_format
+|X
+
+|dcType
+|None
+|Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type
+|X
+
+|acDigitizationDate
+|string
+|Date (ISO 8601 Date/Time) the first digital version was created. https://tdwg.github.io/ac/termlist/#ac_digitizationDate
+|X
+
+|xmpMetadataDate
+|string
+|Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automaticaly set. https://tdwg.github.io/ac/termlist/#xmp_MetadataDate
+|
+
+|uploadedBy
+|string
+|Reference to the person who uploaded the object.
+|
+
+|acHashFunction
+|string
+|The cryptographic hash function used to compute the value given in acHashValue. https://tdwg.github.io/ac/termlist/#ac_hashFunction
+|
+
+|acHashValue
+|string
+|Hash of the uploaded object. Automaticaly generated on successful file upload. https://tdwg.github.io/ac/termlist/#ac_hashValue
+|
+
+|xmpUsageTerms
+|string
+|Text instructions on how a resource can be legally used. https://tdwg.github.io/ac/termlist/#xmpRights_UsageTerms
+|X
+
+|xmpRightsWebStatement
+|string
+|A URL defining or further elaborating on the license statement. https://tdwg.github.io/ac/termlist/#xmpRights_WebStatement
+|X
+
+|dcRights
+|string
+|Information about rights held in and over the resource. https://tdwg.github.io/ac/termlist/#dc_rights
+|X
+
+|managedAttributes
+|array
+|List of key/value pairs of managed attributes.
+|
+
+|asTags
+|array
+|List of key(tag). Similar to https://tdwg.github.io/ac/termlist/#ac_tag
+|
+
+|acDerivedFrom
+|string
+|A URL that points to a meta data object that this meta derived from, such as a thumbnail. https://tdwg.github.io/ac/termlist/#ac_derivedFrom
+|
+|===
+
+
+.Relationships
+|===
+|Name |Type |Description|Required?
+
+|dcCreator
+|None
+|None
+|
+|===
+
+== Object (file)
+
+Uses https://tools.ietf.org/html/rfc2387[multipart] upload.
+
+Operation:
+
+* `PUT /objects/{id}/file`
+
+== Managed Attributes
+
+Managed attributes are key/value pairs where the key can be dynamically created by users with admin privileges. Managed attributes can then be used by regular users
+and by filename parsing strategies.
+
+Operations:
+
+* `POST /managed-attributes` (admin only)
+* `GET /managed-attributes/{id}`
+* `PUT /managed-attributes/{id}` (admin only)
+* `DELETE /managed-attributes/{id}` (admin only)
+
+=== The managed attributes schema
+
+The managed attributes for the media metadata
+
+.Properties
+|===
+|Name |Type |Description|Required?
+
+|id
+|string
+|Identifier of the managedAttribute as UUID
+|X
+
+|type
+|managedAttribute
+|None
+|X
+|===
+.Attributes
+[options="autowidth"]
+|===
+|Name |Type |Description|Required?
+
+|name
+|string
+|ref to the name of the managed attribute
+|X
+
+|managedAttributeType
+|['integer', 'string']
+|ref to the type of the managed attribute
+|X
+
+|acceptedValues
+|array
+|ref to the accepted values of the named attribute if any
+|
+|===
+
+
+
+== Filename Parsing Strategy
+
+Operations:
+
+* `POST /filename-strategy` (admin only)
+* `GET /filename-strategy/{id}`
+* `PUT /filename-strategy/{id}` (admin only)
+* `DELETE /filename-strategy/{id}` (admin only)
+
+=== The filename metadata strategy schema
+
+Schema representing the filename metadata extraction strategy.
+
+.Properties
+|===
+|Name |Type |Description|Required?
+
+|id
+|integer
+|Identifier of the strategy. Server generated.
+|X
+
+|type
+|strategy
+|None
+|X
+|===
+.Attributes
+[options="autowidth"]
+|===
+|Name |Type |Description|Required?
+
+|strategyName
+|string
+|Name of the strategy.
+|X
+
+|regex
+|string
+|Pattern as Regex used to parse file name.
+|X
+
+|targets
+|array
+|None
+|X
+|===
+
+
+
+Filename parsing is used to automatically extract managed attributes from a filename and a pre-registered 'strategy'. Strategies are regex based
+and can only match a single managed attribute in a filename.
+
+== Filename Attributes Extraction
+
+Operation:
+
+* `POST /filename_attributes_extraction`
+
+Request:
+
+=== Filename metadata POST request schema
+
+Schema representing the request to extract metadata from a filename and a strategy.
+
+.Attributes
+[options="autowidth"]
+|===
+|Name |Type |Description|Required?
+
+|fileName
+|string
+|The file name to be parsed.
+|X
+
+|strategyId
+|integer
+|Identifier of the strategy being used to parse the filename.
+|X
+|===
+
+
+
+Response:
+
+=== Filename metadata POST response schema
+
+Schema representing the response from extracting metadata from a filename and a strategy.
+
+.Attributes
+[options="autowidth"]
+|===
+|Name |Type |Description|Required?
+
+|capturedAttributes
+|array
+|The attributes returned from filename parsing.
+|X
+|===</pre>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-03 15:31:24 UTC
+Last updated 2019-10-03 18:26:01 UTC
 </div>
 </div>
 </body>
