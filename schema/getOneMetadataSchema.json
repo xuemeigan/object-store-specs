@@ -95,7 +95,7 @@
               ],
               "description": "List of key/value pairs of managed attributes."
             },
-            "asTags": {
+            "acTags": {
               "type": "array",
               "items": [
                 {

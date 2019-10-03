@@ -20,7 +20,7 @@ JSON API structure:
     }
   }
 }
---------
+----
 
 The Properties section of the document includes the `type` and the `id` of the JSON API structure. Attributes and Relationships refer to their respective sections in the JSON API structure.
 
