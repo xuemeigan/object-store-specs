@@ -19,7 +19,8 @@
       ],
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "Identifier of the object as UUID"
         },
         "type": {
           "const": "metadata",
