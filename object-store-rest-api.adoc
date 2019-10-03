@@ -4,7 +4,26 @@
 = DINA Object-Store REST API
 
 
-All API requests and responses are following https://jsonapi.org/[JSON API Specification]. The JSON API envelope is asbtracted in the following document to improve readability.
+All API requests and responses are following https://jsonapi.org/[JSON API Specification]. The JSON API envelope is abstracted in the following document to improve readability.
+
+JSON API structure:
+----
+{
+  "data": {
+    "type": "articles",
+    "id": "a4afa2f3-ee0a-42f2-b860-441f3fd0f20d",
+    "attributes": {
+      // ...
+    },
+    "relationships": {
+      // ...
+    }
+  }
+}
+--------
+
+The Properties section of the document includes the `type` and the `id` of the JSON API structure. Attributes and Relationships refer to their respective sections in the JSON API structure.
+
 
 == Object
 

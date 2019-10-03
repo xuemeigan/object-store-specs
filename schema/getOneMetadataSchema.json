@@ -95,7 +95,7 @@
               ],
               "description": "List of key/value pairs of managed attributes."
             },
-            "unmanagedAttributes": {
+            "asTags": {
               "type": "array",
               "items": [
                 {
@@ -125,11 +125,11 @@
                "properties": {
                   "id": {
                     "type": "string",
-                    "description": "The id of the dcCreater."
+                    "description": "The id of the dcCreator."
                   },
                   "type": {
                     "const": "agent",
-                    "description": "The type of the dcCreater object."
+                    "description": "The type of the dcCreator object."
                   }
                 }      			  
               }              

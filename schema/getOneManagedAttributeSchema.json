@@ -20,13 +20,7 @@
 			"properties": {
 				"id": {
 					"type": "string",
-					"description": "ref to the identifier of the attribute",
-					"examples": [
-						"1",
-						"2",
-						"3",
-						"4"
-					]
+					"description": "Identifier of the managedAttribute as UUID"
 				},
 				"type": {
 					"const": "managedAttribute",
