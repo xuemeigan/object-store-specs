@@ -3,7 +3,6 @@
 
 = DINA Object-Store REST API
 
-
 All API requests and responses are following https://jsonapi.org/[JSON API Specification]. The JSON API envelope is abstracted in the following document to improve readability.
 
 JSON API structure:
@@ -26,15 +25,16 @@ The Properties section of the document includes the `type` and the `id` of the J
 
 == File
 
-Uses https://tools.ietf.org/html/rfc2387[multipart] upload. 
+Uses https://tools.ietf.org/html/rfc2387[multipart] request with `multipart/form-data`. Should not be confused with S3 https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html[Multipart Upload]. 
 
 Operation:
 
 * `POST /file/{bucket}`
 
-The expected form element name is `file`.
+A form element named `file` is expected.
 
-`curl -F file=@image.jpg ...'
+`curl -F file=@image.jpg ...`
+
 
 == Metadata
 
