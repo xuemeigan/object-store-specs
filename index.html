@@ -423,12 +423,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_object">1. Object</a>
+<li><a href="#_file">1. File</a></li>
+<li><a href="#_metadata">2. Metadata</a>
 <ul class="sectlevel2">
-<li><a href="#_object_metadata_schema">1.1. Object metadata schema</a></li>
+<li><a href="#_object_metadata_schema">2.1. Object metadata schema</a></li>
 </ul>
 </li>
-<li><a href="#_object_file">2. Object (file)</a></li>
 <li><a href="#_managed_attributes">3. Managed Attributes</a>
 <ul class="sectlevel2">
 <li><a href="#_managed_attributes_schema">3.1. Managed attributes schema</a></li>
@@ -468,7 +468,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_object">1. Object</h2>
+<h2 id="_file">1. File</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Uses <a href="https://tools.ietf.org/html/rfc2387">multipart</a> upload.</p>
+</div>
+<div class="paragraph">
+<p>Operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>POST /file/{bucket}</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The expected form element name is <code>file</code>.</p>
+</div>
+<div class="paragraph">
+<p>`curl -F file=@image.jpg &#8230;&#8203;'</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_metadata">2. Metadata</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Represents the metatadata of the object held in the object store.</p>
@@ -479,18 +503,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><code>POST /object</code></p>
+<p><code>POST /metadata</code></p>
 </li>
 <li>
-<p><code>GET /object/{id}</code></p>
+<p><code>GET /metadata/{id}</code></p>
 </li>
 <li>
-<p><code>PUT /object/{id}</code></p>
+<p><code>PUT /metadata/{id}</code></p>
 </li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_object_metadata_schema">1.1. Object metadata schema</h3>
+<h3 id="_object_metadata_schema">2.1. Object metadata schema</h3>
 <div class="paragraph">
 <p>Metadata schema for all types of objects</p>
 </div>
@@ -649,24 +673,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_object_file">2. Object (file)</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Uses <a href="https://tools.ietf.org/html/rfc2387">multipart</a> upload.</p>
-</div>
-<div class="paragraph">
-<p>Operation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>PUT /objects/{id}/file</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_managed_attributes">3. Managed Attributes</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -769,7 +775,7 @@ and by filename parsing strategies.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-07 14:08:00 UTC
+Last updated 2019-10-07 15:25:37 UTC
 </div>
 </div>
 </body>
