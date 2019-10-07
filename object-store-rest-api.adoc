@@ -59,31 +59,3 @@ Operations:
 
 include::schema/getOneManagedAttributeSchema.adoc[]
 
-== Filename Parsing Strategy
-
-Operations:
-
-* `POST /filename-strategy` (admin only)
-* `GET /filename-strategy/{id}`
-* `PUT /filename-strategy/{id}` (admin only)
-* `DELETE /filename-strategy/{id}` (admin only)
-
-include::schema/getOneFilenameMetadataStrategySchema.adoc[]
-
-Filename parsing is used to automatically extract managed attributes from a filename and a pre-registered 'strategy'. Strategies are regex based
-and can only match a single managed attribute in a filename.
-
-== Filename Attributes Extraction
-
-Operation:
-
-* `POST /filename_attributes_extraction`
-
-Request:
-
-include::schema/postFilenameMetadataRequestSchema.adoc[]
-
-Response:
-
-include::schema/postFilenameMetadataResponseSchema.adoc[]
-
