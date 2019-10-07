@@ -471,7 +471,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_file">1. File</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Uses <a href="https://tools.ietf.org/html/rfc2387">multipart</a> upload.</p>
+<p>Uses <a href="https://tools.ietf.org/html/rfc2387">multipart</a> request with <code>multipart/form-data</code>. Should not be confused with S3 <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html">Multipart Upload</a>.</p>
 </div>
 <div class="paragraph">
 <p>Operation:</p>
@@ -484,10 +484,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </div>
 <div class="paragraph">
-<p>The expected form element name is <code>file</code>.</p>
+<p>A form element named <code>file</code> is expected.</p>
 </div>
 <div class="paragraph">
-<p>`curl -F file=@image.jpg &#8230;&#8203;'</p>
+<p><code>curl -F file=@image.jpg &#8230;&#8203;</code></p>
 </div>
 </div>
 </div>
@@ -775,7 +775,7 @@ and by filename parsing strategies.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-10-07 15:25:37 UTC
+Last updated 2019-10-07 15:52:06 UTC
 </div>
 </div>
 </body>
