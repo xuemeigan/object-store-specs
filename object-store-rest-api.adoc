@@ -24,26 +24,30 @@ JSON API structure:
 
 The Properties section of the document includes the `type` and the `id` of the JSON API structure. Attributes and Relationships refer to their respective sections in the JSON API structure.
 
+== File
 
-== Object
+Uses https://tools.ietf.org/html/rfc2387[multipart] upload. 
+
+Operation:
+
+* `POST /file/{bucket}`
+
+The expected form element name is `file`.
+
+`curl -F file=@image.jpg ...'
+
+== Metadata
 
 Represents the metatadata of the object held in the object store.
 
 Operations:
 
-* `POST /object`
-* `GET /object/{id}`
-* `PUT /object/{id}`
+* `POST /metadata`
+* `GET /metadata/{id}`
+* `PUT /metadata/{id}`
 
 include::schema/getOneMetadataSchema.adoc[]
 
-== Object (file)
-
-Uses https://tools.ietf.org/html/rfc2387[multipart] upload.
-
-Operation:
-
-* `PUT /objects/{id}/file`
 
 == Managed Attributes
 
