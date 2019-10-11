@@ -56,10 +56,10 @@ and by filename parsing strategies.
 
 Operations:
 
-* `POST /managed-attributes` (admin only)
-* `GET /managed-attributes/{id}`
-* `PUT /managed-attributes/{id}` (admin only)
-* `DELETE /managed-attributes/{id}` (admin only)
+* `POST /managed-attribute` (admin only)
+* `GET /managed-attribute/{id}`
+* `PUT /managed-attribute/{id}` (admin only)
+* `DELETE /managed-attribute/{id}` (admin only)
 
 include::schema/getOneManagedAttributeSchema.adoc[]
 
