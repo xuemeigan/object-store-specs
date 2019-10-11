@@ -23,7 +23,7 @@
 					"description": "Identifier of the managedAttribute as UUID"
 				},
 				"type": {
-					"const": "managedAttribute",
+					"const": "managed-attribute",
 					"description": "The type of the object being returned."
 				},
 				"attributes": {
