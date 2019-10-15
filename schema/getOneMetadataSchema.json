@@ -59,9 +59,9 @@
               "type": "string",
               "description": "Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automaticaly set. https://tdwg.github.io/ac/termlist/#xmp_MetadataDate"
             },
-            "uploadedBy": {
+            "originalFilename": {
               "type": "string",
-              "description": "Reference to the person who uploaded the object."
+              "description": "Name of the file at the source without the folder structure"
             },
             "acHashFunction": {
               "type": "string",
@@ -132,7 +132,26 @@
                   }
                 }      			  
               }              
-            }            
+            },
+            "acMetadataCreator": {
+              "data": { 
+              "type": "object",
+              "required": [
+                 "id",
+                 "type"
+               ],
+               "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "The id of the acMetadataCreator."
+                  },
+                  "type": {
+                    "const": "agent",
+                    "description": "The type of the acMetadataCreator object."
+                  }
+                }      			  
+              }              
+            }              
           }
         }
       }
