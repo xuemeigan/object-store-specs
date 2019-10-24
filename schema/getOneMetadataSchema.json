@@ -47,7 +47,8 @@
                 "Image",
                 "MovingImage",
                 "Sound",
-                "Text"
+                "Text",
+                "Dataset"
               ],
               "description": "Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type"
             },
