@@ -35,6 +35,7 @@ A form element named `file` is expected.
 
 `curl -F file=@image.jpg ...`
 
+* `GET /file/{bucket}/{id}`
 
 == Metadata
 
