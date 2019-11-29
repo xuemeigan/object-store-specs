@@ -37,6 +37,8 @@ A form element named `file` is expected.
 
 * `GET /file/{bucket}/{id}`
 
+Triggers a download of a specific file.
+
 == Metadata
 
 Represents the metatadata of the object held in the object store.
