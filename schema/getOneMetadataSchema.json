@@ -30,6 +30,7 @@
           "description": "Schema representing the metadata associated with objects",
           "type": "object",
           "required": [
+            "fileIdentifier",
             "dcFormat",
             "dcType",
             "acDigitizationDate",
