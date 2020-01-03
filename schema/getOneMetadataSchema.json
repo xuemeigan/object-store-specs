@@ -31,6 +31,7 @@
           "type": "object",
           "required": [
             "fileIdentifier",
+            "bucket",
             "dcFormat",
             "dcType",
             "acDigitizationDate",
@@ -73,6 +74,10 @@
               "type": "string",
               "description": "Name of the file at the source without the folder structure"
             },
+            "fileExtension": {
+              "type": "string",
+              "description": "Extension of the file including the dot (e.g. '.png')"
+            }, 
             "acHashFunction": {
               "type": "string",
               "description": "The cryptographic hash function used to compute the value given in acHashValue. https://tdwg.github.io/ac/termlist/#ac_hashFunction"
