@@ -68,7 +68,7 @@
             },
             "xmpMetadataDate": {
               "type": "string",
-              "description": "Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automaticaly set. https://tdwg.github.io/ac/termlist/#xmp_MetadataDate"
+              "description": "Point in time (ISO 8601 Date/Time) recording when the last modification to metadata (not necessarily the media object itself) occurred. Automatically set. https://tdwg.github.io/ac/termlist/#xmp_MetadataDate"
             },
             "originalFilename": {
               "type": "string",
