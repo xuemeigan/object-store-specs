@@ -110,6 +110,10 @@
               "type": "string",
               "description": "Point in time (ISO 8601 Date/Time) recording when the metadata entry was created."
             },
+            "deletedDate": {
+              "type": "string",
+              "description": "Point in time (ISO 8601 Date/Time) recording when the metadata entry was deleted. If empty or null, the metadata is considered not deleted."
+            },
             "managedAttributes": {
               "type": "array",
               "items": [
