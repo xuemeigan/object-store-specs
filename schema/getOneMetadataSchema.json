@@ -108,7 +108,7 @@
             },
             "publiclyReleasable": {
               "type": "boolean",
-              "description": "Can the object representented by the metadata be released publicly? An object that is released publicly retain its license and copyright"
+              "description": "Can the object representented by the metadata be released publicly? An object that is released publicly retains its license and copyright"
             },
             "notPubliclyReleasableReason": {
               "type": "string",
