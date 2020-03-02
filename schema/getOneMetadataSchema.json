@@ -46,11 +46,11 @@
             },
             "dcType": {
               "enum": [
-                "Image",
-                "MovingImage",
-                "Sound",
-                "Text",
-                "Dataset"
+                "IMAGE",
+                "MOVING_IMAGE",
+                "SOUND",
+                "TEXT",
+                "DATASET"
               ],
               "description": "Type of object stored. Higher level than mediaType. https://tdwg.github.io/ac/termlist/#dc_type"
             },
