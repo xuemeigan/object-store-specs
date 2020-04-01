@@ -47,7 +47,7 @@ Operations:
 
 * `POST /metadata`
 * `GET /metadata/{id}`
-* `PUT /metadata/{id}`
+* `PATCH /metadata/{id}`
 
 include::schema/getOneMetadataSchema.adoc[]
 
@@ -61,7 +61,7 @@ Operations:
 
 * `POST /managed-attribute` (admin only)
 * `GET /managed-attribute/{id}`
-* `PUT /managed-attribute/{id}` (admin only)
+* `PATCH /managed-attribute/{id}` (admin only)
 * `DELETE /managed-attribute/{id}` (admin only)
 
 include::schema/getOneManagedAttributeSchema.adoc[]
