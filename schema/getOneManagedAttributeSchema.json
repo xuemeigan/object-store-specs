@@ -40,7 +40,7 @@
 								"identifier",
 								"identifier_scope",
 								"type_status"
-							]
+							]							
 						},
 						"managedAttributeType": {
 							"type": ["integer","string"],
@@ -56,9 +56,17 @@
 							],
 							"description": "Accepted values of the named attribute (if any)",
 							"examples": [
-								"dosal for specimen_view",
+								"dorsal for specimen_view",
 								"CataloguedObject for identifier_scope"
-							]
+							]							
+						},
+						"createdDate": {
+							"type": "string",
+							"description": "Date this managed attribute was created. "
+						},
+						"description": {
+							"type": "object",
+							"description": "A map where the language is the key and the value is the managed attribute's description in that language"		
 						}
 					}
 				}
