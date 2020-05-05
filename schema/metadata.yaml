@@ -42,6 +42,16 @@ paths:
             format: int32
             minimum: 0
             maximum: 50
+        - in: query
+          name: fields
+          description: names of sparse fields that should be in query results 
+          schema:
+            type: string
+        - in: query
+          name: include
+          description: names of related entities that should be in query results
+          schema:
+            type: string                      
       responses:
         '200':
           description: metadatas satifying the query restrictions
@@ -155,6 +165,7 @@ components:
           properties:
             id:
               type: string
+              format: uuid
               description: Identifier of the object as UUID
             type:
               type: string
@@ -261,44 +272,14 @@ components:
                   items:
                     type: string
                     description: List of key(tag). Similar to https://tdwg.github.io/ac/termlist/#ac_tag
-            relationships:
-              properties:
                 dcCreator:
-                  type: object
-                  required:
-                    - data
-                  properties:                     
-                    data:
-                      type: object
-                      required:
-                        - id
-                        - type
-                      properties:
-                        id:
-                          type: string
-                          description: The id of the dcCreator.
-                        type:
-                          allOf: [
-                            $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml',
-                            description: The type of the dcCreator object]
+                  type: string
+                  format: uuid
                 acMetadataCreator:                
-                  type: object
-                  required:
-                    - data
-                  properties:                     
-                    data:
-                      type: object
-                      required:
-                        - id
-                        - type
-                      properties:
-                        id:
-                          type: string
-                          description: The id of the acMetadataCreator.
-                        type:
-                          allOf: [
-                            $ref: 'https://raw.githubusercontent.com/DINA-Web/agent-specs/master/schema/agent.yaml',
-                            description: The type of the acMetadataCreator object]                                 
+                  type: string
+                  format: uuid
+            relationships:
+              properties:                                  
                 acDerivedFrom:
                   type: object
                   required:
@@ -312,6 +293,7 @@ components:
                       properties:
                         id:
                           type: string
+                          format: uuid
                           description: The id of the metadata from which the object represented
                             by this metadata is derived from.
                         type:
